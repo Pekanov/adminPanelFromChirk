@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Admin Panel
+{% endblock %}
+
+{% block body %}
+   <h1>Admin Panel</h1>
+
+
+    <div class="container mt-5">
+{#    <h2>All Clients Count = {{size}}</h2>#}
+        <form action="/admin_panel" method="POST">
+            <input type="text" name="userFilter" id="userFilter" class="form-control" placeholder="input email or lastname for filter">
+            <div class="mb-3">
+                <label class="form-label">Choose an option</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="filter_value" id="true" value="true" required>
+                    <label class="form-check-label" for="true">search for email</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="filter_value" id="false" value="false" required>
+                    <label class="form-check-label" for="false">search for lastname</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+
+
+<div id="element" style="max-height: 400px; overflow-y: auto;">
+  <div class="overflow">
+    {% for user in users %}
+      <div class="client-block" style="border: 1px solid #ccc;">
+        <div class="alert-info">
+          <ul class="text-small">
+            <li class="mb-1">User firstname - {{ user.firstname }}</li>
+            <li class="mb-1">User lastname - {{ user.lastname }}</li>
+            <li class="mb-1">User email - {{ user.email }}</li>
+            <li class="mb-1">User authorities - {{ user.authority }}</li>
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+    <form action="/admin_panel" method="post" style="max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Choose an option</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="value" id="true" value="true" required>
+      <label class="form-check-label" for="true">Up to moderator</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="value" id="false" value="false" required>
+      <label class="form-check-label" for="false">Down to ordinary</label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+{% endblock %}

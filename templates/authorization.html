@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Admin Authorization Page
+{% endblock %}
+
+{% block body %}
+
+<main class="form-signin d-flex justify-content-center align-items-center">
+  <form method="post" style="max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+
+    <h1 class="h3 mb-3 fw-normal">Authorization only for Admin</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Authorization">
+
+  </form>
+</main>
+
+
+
+{% endblock %}
