@@ -1,11 +1,21 @@
 import requests as requests
 import json
 from flask import Flask, render_template, request, jsonify, redirect
+from dotenv import load_dotenv
+import os
+
 
 app = Flask(__name__)
 
+load_dotenv()
+
+host = os.getenv('HOST')
+port = os.getenv('PORT')
+
+# formatted_host = f'{host}:{port}'
+
 filename = "tokens.json"
-HOST = 'localhost:8080'
+HOST = f'{host}:{port}'
 
 @app.route('/')
 def hello_world():  # put application's code here
